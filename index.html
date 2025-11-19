@@ -30,8 +30,13 @@
       background: radial-gradient(circle at top, #181833 0, var(--bg) 55%);
       color: #f5f5f5;
       overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 16px 8px 32px;
     }
 
+    /* ruido / flicker */
     body::before {
       content: "";
       position: fixed;
@@ -48,6 +53,7 @@
       50% { opacity: 0.3; }
     }
 
+    /* símbolos cayendo */
     .symbol-rain {
       position: fixed;
       inset: 0;
@@ -87,173 +93,57 @@
     .symbol:nth-child(9)  { left: 85%; animation-duration: 7.2s;animation-delay: -4.5s; }
     .symbol:nth-child(10) { left: 93%; animation-duration: 9.2s;animation-delay: -6s; }
 
-    .page {
+    /* “celular” central */
+    .phone-shell {
       position: relative;
       z-index: 2;
-      padding: 16px 24px 40px;
+      width: 100%;
+      max-width: 420px;
+      background: rgba(3, 3, 10, 0.85);
+      border-radius: 28px;
+      padding: 14px 14px 20px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1120px;
-      margin: 0 auto 16px;
-      font-size: 0.85rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.85);
-    }
-
-    .logo-name {
-      font-weight: 600;
-    }
-
-    .hero {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .hero-left,
-    .hero-right {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
+    .top-text {
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: rgba(240,240,240,0.85);
-      margin-bottom: 10px;
+      color: rgba(230,230,230,0.8);
+      text-align: center;
+      margin-bottom: 6px;
     }
 
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      box-shadow: 0 0 10px rgba(0,255,246,0.8);
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 3vw, 2.6rem);
-      line-height: 1.1;
+    .title {
+      text-align: center;
+      font-size: 1.4rem;
       font-weight: 700;
+      margin: 0;
       text-shadow: 1px 0 var(--accent1), -1px 0 var(--accent2);
     }
 
     .subtitle {
-      font-size: 0.98rem;
-      color: rgba(230,230,230,0.9);
-      margin-bottom: 18px;
-    }
-
-    .hero-text {
+      text-align: center;
       font-size: 0.9rem;
-      color: rgba(220,220,220,0.9);
-      margin-bottom: 18px;
-      line-height: 1.5;
-      max-width: 420px;
-    }
-
-    .location-card {
-      background: rgba(5,5,10,0.75);
-      border-radius: 12px;
-      padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,0.15);
-      font-size: 0.85rem;
-      color: rgba(235,235,235,0.95);
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-
-    .location-title {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.75rem;
-      color: rgba(200,200,200,0.95);
-      margin-bottom: 4px;
-    }
-
-    .location-card a {
-      color: #9fe3ff;
-      text-decoration: underline;
-      font-size: 0.8rem;
-    }
-
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 380px;
-      margin-bottom: 18px;
-    }
-
-    .paypal-block {
-      background: rgba(5,5,10,0.7);
-      border-radius: 12px;
-      padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .paypal-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: rgba(230,230,230,0.9);
-      margin-bottom: 6px;
+      margin-top: 4px;
+      margin-bottom: 10px;
     }
 
-    .note {
-      font-size: 0.85rem;
-      color: rgba(220,220,220,0.85);
-      margin-bottom: 6px;
-    }
-
-    .gratitude {
-      font-size: 0.8rem;
-      color: rgba(210,210,210,0.85);
-      max-width: 420px;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .contact {
-      font-size: 0.85rem;
-      color: rgba(230,230,230,0.95);
-      margin-top: 6px;
-    }
-
-    .contact a {
-      color: inherit;
-      text-decoration: underline;
-    }
-
+    /* video 9:16 tipo reel */
     .video-frame {
-      background: var(--card);
-      border-radius: 18px;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      max-width: 460px;
-      margin-inline: auto;
+      background: #000;
+      border-radius: 22px;
+      padding: 4px;
+      border: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 14px;
     }
 
     .video-inner {
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
-      aspect-ratio: 9 / 16;
+      aspect-ratio: 9 / 16; /* 1080x1920 */
       background: #000;
     }
 
@@ -264,13 +154,71 @@
       display: block;
     }
 
-    audio {
-      display: none;
+    /* grid de botones debajo del video */
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
-    .audio-toggle-wrap {
+    .paypal-block {
+      background: rgba(8, 8, 20, 0.9);
+      border-radius: 10px;
+      padding: 6px 6px 4px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .paypal-title {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: rgba(235,235,235,0.95);
+      text-align: center;
+      margin-bottom: 4px;
+      min-height: 2.6em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .paypal-container {
+      transform: scale(0.8);
+      transform-origin: top;
+    }
+
+    /* contacto whatsapp */
+    .whats-wrap {
       margin-top: 4px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .whats-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #25d366;
+      background: radial-gradient(circle at top left,#102515,#020503);
+      color: #eafff0;
+      font-size: 0.8rem;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(37,211,102,0.6);
+    }
+
+    .whats-btn span {
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-weight: 600;
+    }
+
+    /* bocina */
+    .audio-toggle-wrap {
+      text-align: center;
+      margin-bottom: 8px;
     }
 
     .audio-btn {
@@ -292,28 +240,62 @@
       border-color: var(--accent2);
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column-reverse;
-        gap: 24px;
+    .note {
+      font-size: 0.8rem;
+      color: rgba(220,220,220,0.9);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .contact-text {
+      font-size: 0.8rem;
+      color: rgba(230,230,230,0.95);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .contact-text strong {
+      font-weight: 600;
+    }
+
+    .location-card {
+      background: rgba(5,5,10,0.8);
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 0.8rem;
+      color: rgba(235,235,235,0.96);
+      line-height: 1.4;
+    }
+
+    .location-title {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      color: rgba(200,200,200,0.95);
+      margin-bottom: 4px;
+    }
+
+    .location-card a {
+      color: #9fe3ff;
+      text-decoration: underline;
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 480px) {
+      .buttons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 1fr;
       }
 
-      .page {
-        padding-inline: 14px;
-      }
-
-      .top-bar {
-        padding-inline: 10px;
-      }
-
-      .hero-text,
-      .gratitude {
-        max-width: 100%;
+      .buttons-grid > :last-child {
+        grid-column: 1 / -1; /* experiencia completa ocupa toda la fila abajo */
       }
     }
   </style>
 </head>
 <body>
+  <!-- símbolos glitch -->
   <div class="symbol-rain">
     <div class="symbol">✶</div>
     <div class="symbol">∞</div>
@@ -327,118 +309,111 @@
     <div class="symbol">✶</div>
   </div>
 
-  <div class="page">
-    <div class="top-bar">
-      <div class="logo-name">JAZZMIN CALDERÓN · HIPNOSIS Hz</div>
+  <div class="phone-shell">
+    <div class="top-text">29 y 30 de noviembre · Mérida, Yucatán</div>
+    <h1 class="title">Taller Hipnosis Hz</h1>
+    <div class="subtitle">El cuerpo que piensa · El lenguaje del síntoma</div>
+
+    <!-- VIDEO arriba -->
+    <div class="video-frame">
+      <div class="video-inner">
+        <video autoplay muted loop playsinline>
+          <source src="1.5.mp4" type="video/mp4" />
+          Tu navegador no soporta video HTML5.
+        </video>
+      </div>
     </div>
 
-    <section class="hero">
-      <div class="hero-left">
-        <div class="badge">
-          <div class="badge-dot"></div>
-          29 y 30 de noviembre · Mérida, Yucatán
-        </div>
-
-        <h1>Taller Hipnosis Hz</h1>
-        <div class="subtitle">Taller presencial · Salón Uxmal 1</div>
-
-        <div class="hero-text">
-          Dos encuentros para explorar el cuerpo, el símbolo y el sonido:
-          hipnosis clínica ericksoniana, música y trabajo sensorial
-          para traducir lo que el síntoma intenta decir.
-        </div>
-
-        <!-- Bloque de ubicación física -->
-        <div class="location-card">
-          <div class="location-title">Lugar</div>
-          Salón Uxmal 1<br />
-          Calle 60 Nte 299, Zona Industrial, Revolución,<br />
-          97118 Mérida, Yucatán, México.<br /><br />
-          <!-- Cuando tengas tu link de mapa de Google, reemplaza el # por el enlace real -->
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            Ver ubicación en Google Maps
-          </a>
-        </div>
-
-        <div class="btn-group">
-          <div class="paypal-block">
-            <div class="paypal-title">Experiencia completa · 2 talleres (donativo plus)</div>
-            <div id="paypal-container-8YWW4KXZ6KJ5Q"></div>
-          </div>
-
-          <div class="paypal-block">
-            <div class="paypal-title">Taller 1 · Frecuencia y Cuerpo</div>
-            <div id="paypal-container-G5YBF8SD9QZVQ"></div>
-          </div>
-
-          <div class="paypal-block">
-            <div class="paypal-title">Taller 2 · El Lenguaje del Síntoma</div>
-            <div id="paypal-container-4KZ9APFQATB6C"></div>
-          </div>
-
-          <div class="audio-toggle-wrap">
-            <button
-              class="audio-btn"
-              type="button"
-              id="audio-btn"
-              onclick="toggleAudio()"
-              aria-label="Activar o desactivar audio"
-            >
-              🔊
-            </button>
-          </div>
-        </div>
-
-        <div class="note">
-          Donativo sugerido: 65 USD por los dos días.
-        </div>
-
-        <div class="gratitude">
-          Gracias por tu interés y tu presencia.  
-          Tu participación ayuda a que pueda seguir
-          desarrollando mi investigación en la fusión
-          entre psicología, tecnología y sonido.
-        </div>
-
-        <div class="contact">
-          Contacto / WhatsApp para confirmar pago, preguntas o reserva:<br>
-          <strong>+52 625 122 4082</strong>
-        </div>
+    <!-- TALLER 1 · TALLER 2 · EXPERIENCIA COMPLETA -->
+    <div class="buttons-grid">
+      <div class="paypal-block">
+        <div class="paypal-title">Taller 1</div>
+        <div id="paypal-container-G5YBF8SD9QZVQ" class="paypal-container"></div>
       </div>
 
-      <div class="hero-right">
-        <div class="video-frame">
-          <div class="video-inner">
-            <video autoplay muted loop playsinline>
-              <source src="1.5.mp4" type="video/mp4" />
-              Tu navegador no soporta video HTML5.
-            </video>
-          </div>
-        </div>
+      <div class="paypal-block">
+        <div class="paypal-title">Taller 2</div>
+        <div id="paypal-container-4KZ9APFQATB6C" class="paypal-container"></div>
       </div>
-    </section>
+
+      <div class="paypal-block">
+        <div class="paypal-title">Experiencia completa</div>
+        <div id="paypal-container-8YWW4KXZ6KJ5Q" class="paypal-container"></div>
+      </div>
+    </div>
+
+    <!-- CONTACTO WHATS -->
+    <div class="whats-wrap">
+      <a
+        href="https://wa.me/message/UF5E5GFSXZFBF1"
+        class="whats-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>Contacto WhatsApp</span>
+      </a>
+    </div>
+
+    <!-- BOTÓN MÚSICA (bocinita) -->
+    <div class="audio-toggle-wrap">
+      <button
+        class="audio-btn"
+        type="button"
+        id="audio-btn"
+        onclick="toggleAudio()"
+        aria-label="Activar o desactivar audio"
+      >
+        🔊
+      </button>
+    </div>
+
+    <div class="note">
+      Donativo sugerido: 65 USD por los dos días.
+    </div>
+
+    <div class="contact-text">
+      Confirmación de pago, preguntas o reserva:<br />
+      <strong>+52 625 122 4082</strong>
+    </div>
+
+    <!-- LUGAR -->
+    <div class="location-card">
+      <div class="location-title">Lugar</div>
+      Salón Uxmal 1<br />
+      Calle 60 Nte 299, Zona Industrial, Revolución,<br />
+      97118 Mérida, Yucatán, México.<br /><br />
+      <!-- Cambia # por tu link de Google Maps cuando lo tengas -->
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        Ver ubicación en Google Maps
+      </a>
+    </div>
   </div>
 
-  <audio id="audio-hz" autoplay loop>
+  <!-- AUDIO: intenta comenzar en automático -->
+  <audio id="audio-hz" autoplay loop playsinline>
     <source src="ECHO.rb.wav.rb.wav.rb.wav" type="audio/wav" />
   </audio>
 
+  <!-- PayPal Hosted Buttons render -->
   <script>
-    if (window.paypal && paypal.HostedButtons) {
-      paypal.HostedButtons({
-        hostedButtonId: "8YWW4KXZ6KJ5Q",
-      }).render("#paypal-container-8YWW4KXZ6KJ5Q");
+    window.addEventListener("load", () => {
+      if (window.paypal && paypal.HostedButtons) {
+        paypal.HostedButtons({
+          hostedButtonId: "G5YBF8SD9QZVQ", // Taller 1
+        }).render("#paypal-container-G5YBF8SD9QZVQ");
 
-      paypal.HostedButtons({
-        hostedButtonId: "G5YBF8SD9QZVQ",
-      }).render("#paypal-container-G5YBF8SD9QZVQ");
+        paypal.HostedButtons({
+          hostedButtonId: "4KZ9APFQATB6C", // Taller 2
+        }).render("#paypal-container-4KZ9APFQATB6C");
 
-      paypal.HostedButtons({
-        hostedButtonId: "4KZ9APFQATB6C",
-      }).render("#paypal-container-4KZ9APFQATB6C");
-    }
+        paypal.HostedButtons({
+          hostedButtonId: "8YWW4KXZ6KJ5Q", // Experiencia completa
+        }).render("#paypal-container-8YWW4KXZ6KJ5Q");
+      }
+    });
   </script>
 
+  <!-- control de música -->
   <script>
     function updateAudioIcon(audio) {
       const btn = document.getElementById("audio-btn");
@@ -475,6 +450,7 @@
         audio.play().then(() => {
           updateAudioIcon(audio);
         }).catch(() => {
+          // si el navegador bloquea autoplay, la bocina sirve para encenderlo
           updateAudioIcon(audio);
         });
       }
