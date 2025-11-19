@@ -32,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* ruido / flicker */
     body::before {
       content: "";
       position: fixed;
@@ -49,7 +48,6 @@
       50% { opacity: 0.3; }
     }
 
-    /* símbolos cayendo */
     .symbol-rain {
       position: fixed;
       inset: 0;
@@ -89,7 +87,6 @@
     .symbol:nth-child(9)  { left: 85%; animation-duration: 7.2s;animation-delay: -4.5s; }
     .symbol:nth-child(10) { left: 93%; animation-duration: 9.2s;animation-delay: -6s; }
 
-    /* layout principal */
     .page {
       position: relative;
       z-index: 2;
@@ -170,6 +167,31 @@
       max-width: 420px;
     }
 
+    .location-card {
+      background: rgba(5,5,10,0.75);
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.85rem;
+      color: rgba(235,235,235,0.95);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .location-title {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      color: rgba(200,200,200,0.95);
+      margin-bottom: 4px;
+    }
+
+    .location-card a {
+      color: #9fe3ff;
+      text-decoration: underline;
+      font-size: 0.8rem;
+    }
+
     .btn-group {
       display: flex;
       flex-direction: column;
@@ -218,7 +240,6 @@
       text-decoration: underline;
     }
 
-    /* video tipo reel más grande */
     .video-frame {
       background: var(--card);
       border-radius: 18px;
@@ -243,12 +264,10 @@
       display: block;
     }
 
-    /* audio oculto */
     audio {
       display: none;
     }
 
-    /* botón bocinita */
     .audio-toggle-wrap {
       margin-top: 4px;
       margin-bottom: 10px;
@@ -295,7 +314,6 @@
   </style>
 </head>
 <body>
-  <!-- símbolos que caen -->
   <div class="symbol-rain">
     <div class="symbol">✶</div>
     <div class="symbol">∞</div>
@@ -310,21 +328,19 @@
   </div>
 
   <div class="page">
-    <!-- barra superior con tu nombre -->
     <div class="top-bar">
       <div class="logo-name">JAZZMIN CALDERÓN · HIPNOSIS Hz</div>
     </div>
 
-    <!-- sección principal -->
     <section class="hero">
       <div class="hero-left">
         <div class="badge">
           <div class="badge-dot"></div>
-          Taller online · 29 y 30 de noviembre
+          29 y 30 de noviembre · Mérida, Yucatán
         </div>
 
         <h1>Taller Hipnosis Hz</h1>
-        <div class="subtitle">El cuerpo que piensa · El lenguaje del síntoma</div>
+        <div class="subtitle">Taller presencial · Salón Uxmal 1</div>
 
         <div class="hero-text">
           Dos encuentros para explorar el cuerpo, el símbolo y el sonido:
@@ -332,26 +348,34 @@
           para traducir lo que el síntoma intenta decir.
         </div>
 
+        <!-- Bloque de ubicación física -->
+        <div class="location-card">
+          <div class="location-title">Lugar</div>
+          Salón Uxmal 1<br />
+          Calle 60 Nte 299, Zona Industrial, Revolución,<br />
+          97118 Mérida, Yucatán, México.<br /><br />
+          <!-- Cuando tengas tu link de mapa de Google, reemplaza el # por el enlace real -->
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            Ver ubicación en Google Maps
+          </a>
+        </div>
+
         <div class="btn-group">
-          <!-- Experiencia completa (2 talleres) -->
           <div class="paypal-block">
             <div class="paypal-title">Experiencia completa · 2 talleres (donativo plus)</div>
             <div id="paypal-container-8YWW4KXZ6KJ5Q"></div>
           </div>
 
-          <!-- Taller 1 -->
           <div class="paypal-block">
             <div class="paypal-title">Taller 1 · Frecuencia y Cuerpo</div>
             <div id="paypal-container-G5YBF8SD9QZVQ"></div>
           </div>
 
-          <!-- Taller 2 -->
           <div class="paypal-block">
             <div class="paypal-title">Taller 2 · El Lenguaje del Síntoma</div>
             <div id="paypal-container-4KZ9APFQATB6C"></div>
           </div>
 
-          <!-- Bocina audio ON/OFF -->
           <div class="audio-toggle-wrap">
             <button
               class="audio-btn"
@@ -382,7 +406,6 @@
         </div>
       </div>
 
-      <!-- lado derecho: video tipo reel más grande -->
       <div class="hero-right">
         <div class="video-frame">
           <div class="video-inner">
@@ -396,12 +419,10 @@
     </section>
   </div>
 
-  <!-- audio real (se controla con la bocinita) -->
   <audio id="audio-hz" autoplay loop>
     <source src="ECHO.rb.wav.rb.wav.rb.wav" type="audio/wav" />
   </audio>
 
-  <!-- PayPal Hosted Buttons render -->
   <script>
     if (window.paypal && paypal.HostedButtons) {
       paypal.HostedButtons({
@@ -418,7 +439,6 @@
     }
   </script>
 
-  <!-- script para la música -->
   <script>
     function updateAudioIcon(audio) {
       const btn = document.getElementById("audio-btn");
@@ -448,16 +468,13 @@
 
       if (video) {
         video.muted = true;
-        video.play().catch(() => {
-          /* algunos navegadores piden interacción, no pasa nada */
-        });
+        video.play().catch(() => {});
       }
 
       if (audio) {
         audio.play().then(() => {
           updateAudioIcon(audio);
         }).catch(() => {
-          // si el navegador bloquea autoplay, el botón servirá para encenderlo
           updateAudioIcon(audio);
         });
       }
