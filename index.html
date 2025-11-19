@@ -53,7 +53,7 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 1;
+      z-index: 3; /* por encima del contenido */
       overflow: hidden;
     }
 
@@ -128,6 +128,7 @@
       color: rgba(230,230,230,0.9);
       margin-top: 4px;
       margin-bottom: 10px;
+      font-style: italic;
     }
 
     /* bocina arriba del video */
@@ -214,7 +215,7 @@
     /* contacto whatsapp */
     .whats-wrap {
       margin-top: 4px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       text-align: center;
     }
 
@@ -237,6 +238,33 @@
       text-transform: uppercase;
       letter-spacing: 0.11em;
       font-weight: 600;
+    }
+
+    /* botón Quién soy */
+    .who-wrap {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .who-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--accent1);
+      background: radial-gradient(circle at top left,#2a0b20,#050509);
+      color: #ffe9f6;
+      font-size: 0.8rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-weight: 600;
+      box-shadow: 0 0 14px rgba(255,0,136,0.7);
+    }
+
+    .who-btn:hover {
+      border-color: var(--accent2);
     }
 
     .note {
@@ -303,7 +331,7 @@
   <div class="phone-shell">
     <div class="top-text">29 y 30 de noviembre · Mérida, Yucatán</div>
     <h1 class="title">Taller Hipnosis Hz</h1>
-    <div class="subtitle">El cuerpo que piensa · El lenguaje del síntoma</div>
+    <div class="subtitle">&ldquo;El alma vibra: la conciencia despierta&rdquo;</div>
 
     <!-- BOTÓN MÚSICA (bocinita arriba del video) -->
     <div class="audio-toggle-wrap">
@@ -367,6 +395,18 @@
         rel="noopener noreferrer"
       >
         <span>Contacto WhatsApp</span>
+      </a>
+    </div>
+
+    <!-- QUIÉN SOY -->
+    <div class="who-wrap">
+      <a
+        href="https://psicologiaymente.com/psicologos/2070413/jazmin-calderon-caballero"
+        class="who-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Quién soy
       </a>
     </div>
 
@@ -450,3 +490,4 @@
   </script>
 </body>
 </html>
+
