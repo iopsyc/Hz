@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Taller Hipnosis Hz · 29 y 30 de noviembre</title>
 
+  <!-- PayPal Hosted Buttons -->
+  <script 
+    src="https://www.paypal.com/sdk/js?client-id=BAAje6Qcf5ySabDnKLrQXyWQ_97XzmgQqfmejL44FgKkcvPnjwrhqptS97UwQhLlwaGW9Vu25FmiKYzEs4&components=hosted-buttons&disable-funding=venmo&currency=USD">
+  </script>
+
   <style>
     :root {
       --accent1: #ff0088;
@@ -27,6 +32,7 @@
       overflow-x: hidden;
     }
 
+    /* ruido / flicker */
     body::before {
       content: "";
       position: fixed;
@@ -43,6 +49,7 @@
       50% { opacity: 0.3; }
     }
 
+    /* símbolos cayendo */
     .symbol-rain {
       position: fixed;
       inset: 0;
@@ -82,6 +89,7 @@
     .symbol:nth-child(9)  { left: 85%; animation-duration: 7.2s;animation-delay: -4.5s; }
     .symbol:nth-child(10) { left: 93%; animation-duration: 9.2s;animation-delay: -6s; }
 
+    /* layout principal */
     .page {
       position: relative;
       z-index: 2;
@@ -165,66 +173,30 @@
     .btn-group {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      max-width: 360px;
+      gap: 14px;
+      max-width: 380px;
       margin-bottom: 18px;
     }
 
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 11px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: radial-gradient(circle at top left,#181833,#050509);
-      color: #fdfdfd;
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+    .paypal-block {
+      background: rgba(5,5,10,0.7);
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .paypal-title {
+      font-size: 0.8rem;
       text-transform: uppercase;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn span {
-      position: relative;
-      z-index: 1;
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        120deg,
-        rgba(255,0,136,0.45),
-        rgba(0,255,246,0.4)
-      );
-      mix-blend-mode: soft-light;
-      opacity: 0;
-      transition: opacity 0.18s;
-    }
-
-    .btn:hover::before {
-      opacity: 1;
-    }
-
-    .btn-whatsapp {
-      border-color: #25d366;
-      box-shadow: 0 0 10px rgba(37,211,102,0.6);
-    }
-
-    .btn-whatsapp::before {
-      background: linear-gradient(120deg,rgba(37,211,102,0.5),rgba(0,0,0,0.6));
+      letter-spacing: 0.12em;
+      color: rgba(230,230,230,0.9);
+      margin-bottom: 6px;
     }
 
     .note {
       font-size: 0.85rem;
       color: rgba(220,220,220,0.85);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .gratitude {
@@ -232,15 +204,28 @@
       color: rgba(210,210,210,0.85);
       max-width: 420px;
       line-height: 1.5;
+      margin-bottom: 8px;
     }
 
+    .contact {
+      font-size: 0.85rem;
+      color: rgba(230,230,230,0.95);
+      margin-top: 6px;
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    /* video tipo reel más grande */
     .video-frame {
       background: var(--card);
       border-radius: 18px;
-      padding: 10px;
+      padding: 12px;
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      max-width: 380px;
+      max-width: 460px;
       margin-inline: auto;
     }
 
@@ -258,8 +243,34 @@
       display: block;
     }
 
+    /* audio oculto */
     audio {
       display: none;
+    }
+
+    /* botón bocinita */
+    .audio-toggle-wrap {
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+
+    .audio-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: radial-gradient(circle at top left,#181833,#050509);
+      color: #ffffff;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+
+    .audio-btn:hover {
+      border-color: var(--accent2);
     }
 
     @media (max-width: 900px) {
@@ -284,6 +295,7 @@
   </style>
 </head>
 <body>
+  <!-- símbolos que caen -->
   <div class="symbol-rain">
     <div class="symbol">✶</div>
     <div class="symbol">∞</div>
@@ -298,10 +310,12 @@
   </div>
 
   <div class="page">
+    <!-- barra superior con tu nombre -->
     <div class="top-bar">
       <div class="logo-name">JAZZMIN CALDERÓN · HIPNOSIS Hz</div>
     </div>
 
+    <!-- sección principal -->
     <section class="hero">
       <div class="hero-left">
         <div class="badge">
@@ -319,35 +333,36 @@
         </div>
 
         <div class="btn-group">
-          <a
-            href="https://luma.com/event/evt-3qHrqK6ybeeTcTG"
-            class="btn luma-checkout--button"
-            data-luma-action="checkout"
-            data-luma-event-id="evt-3qHrqK6ybeeTcTG"
-          >
-            <span>Registro Taller I — El Cuerpo que Piensa</span>
-          </a>
+          <!-- Experiencia completa (2 talleres) -->
+          <div class="paypal-block">
+            <div class="paypal-title">Experiencia completa · 2 talleres (donativo plus)</div>
+            <div id="paypal-container-8YWW4KXZ6KJ5Q"></div>
+          </div>
 
-          <a
-            href="https://luma.com/event/evt-GuHpxo38rBwrvVc"
-            class="btn luma-checkout--button"
-            data-luma-action="checkout"
-            data-luma-event-id="evt-GuHpxo38rBwrvVc"
-          >
-            <span>Registro Taller II — El Lenguaje del Síntoma</span>
-          </a>
+          <!-- Taller 1 -->
+          <div class="paypal-block">
+            <div class="paypal-title">Taller 1 · Frecuencia y Cuerpo</div>
+            <div id="paypal-container-G5YBF8SD9QZVQ"></div>
+          </div>
 
-          <button class="btn" type="button" onclick="toggleAudio()">
-            <span>Escuchar frecuencia Hz del taller</span>
-          </button>
+          <!-- Taller 2 -->
+          <div class="paypal-block">
+            <div class="paypal-title">Taller 2 · El Lenguaje del Síntoma</div>
+            <div id="paypal-container-4KZ9APFQATB6C"></div>
+          </div>
 
-          <a
-            href="https://wa.me/message/UF5E5GFSXZFBF1"
-            class="btn btn-whatsapp"
-            target="_blank"
-          >
-            <span>Escribir por WhatsApp</span>
-          </a>
+          <!-- Bocina audio ON/OFF -->
+          <div class="audio-toggle-wrap">
+            <button
+              class="audio-btn"
+              type="button"
+              id="audio-btn"
+              onclick="toggleAudio()"
+              aria-label="Activar o desactivar audio"
+            >
+              🔊
+            </button>
+          </div>
         </div>
 
         <div class="note">
@@ -360,12 +375,18 @@
           desarrollando mi investigación en la fusión
           entre psicología, tecnología y sonido.
         </div>
+
+        <div class="contact">
+          Contacto / WhatsApp para confirmar pago, preguntas o reserva:<br>
+          <strong>+52 625 122 4082</strong>
+        </div>
       </div>
 
+      <!-- lado derecho: video tipo reel más grande -->
       <div class="hero-right">
         <div class="video-frame">
           <div class="video-inner">
-            <video controls playsinline>
+            <video autoplay muted loop playsinline>
               <source src="1.5.mp4" type="video/mp4" />
               Tu navegador no soporta video HTML5.
             </video>
@@ -375,29 +396,74 @@
     </section>
   </div>
 
-  <audio id="audio-hz">
+  <!-- audio real (se controla con la bocinita) -->
+  <audio id="audio-hz" autoplay loop>
     <source src="ECHO.rb.wav.rb.wav.rb.wav" type="audio/wav" />
   </audio>
 
-  <script
-    id="luma-checkout"
-    src="https://embed.lu.ma/checkout-button.js"
-  ></script>
-
+  <!-- PayPal Hosted Buttons render -->
   <script>
+    if (window.paypal && paypal.HostedButtons) {
+      paypal.HostedButtons({
+        hostedButtonId: "8YWW4KXZ6KJ5Q",
+      }).render("#paypal-container-8YWW4KXZ6KJ5Q");
+
+      paypal.HostedButtons({
+        hostedButtonId: "G5YBF8SD9QZVQ",
+      }).render("#paypal-container-G5YBF8SD9QZVQ");
+
+      paypal.HostedButtons({
+        hostedButtonId: "4KZ9APFQATB6C",
+      }).render("#paypal-container-4KZ9APFQATB6C");
+    }
+  </script>
+
+  <!-- script para la música -->
+  <script>
+    function updateAudioIcon(audio) {
+      const btn = document.getElementById("audio-btn");
+      if (!btn) return;
+      btn.textContent = audio.paused ? "🔇" : "🔊";
+    }
+
     function toggleAudio() {
       const audio = document.getElementById("audio-hz");
       if (!audio) return;
 
       if (audio.paused) {
-        audio.play().catch(() => {
-          alert("Toca de nuevo para permitir el audio.");
+        audio.play().then(() => {
+          updateAudioIcon(audio);
+        }).catch(() => {
+          alert("Si no se escucha, toca de nuevo para permitir el audio.");
         });
       } else {
         audio.pause();
+        updateAudioIcon(audio);
       }
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("audio-hz");
+      const video = document.querySelector("video");
+
+      if (video) {
+        video.muted = true;
+        video.play().catch(() => {
+          /* algunos navegadores piden interacción, no pasa nada */
+        });
+      }
+
+      if (audio) {
+        audio.play().then(() => {
+          updateAudioIcon(audio);
+        }).catch(() => {
+          // si el navegador bloquea autoplay, el botón servirá para encenderlo
+          updateAudioIcon(audio);
+        });
+      }
+    });
   </script>
 </body>
 </html>
+
 
