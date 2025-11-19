@@ -145,7 +145,7 @@
     video {
       width: 100%;
       height: 100%;
-      object-fit: contain;   /* <- para que NO se corte */
+      object-fit: contain;
       background: #000;
       display: block;
     }
@@ -241,17 +241,6 @@
       margin-bottom: 4px;
     }
 
-    .contact-text {
-      font-size: 0.8rem;
-      color: rgba(230,230,230,0.95);
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .contact-text strong {
-      font-weight: 600;
-    }
-
     .location-card {
       background: rgba(5,5,10,0.8);
       border-radius: 12px;
@@ -320,25 +309,25 @@
     <div class="cta-grid">
       <a
         class="cta-btn"
-        href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G5YBF8SD9QZVQ"
+        href="https://luma.com/0zmn7m5a"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Taller 1
+        Taller I
       </a>
 
       <a
         class="cta-btn"
-        href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4KZ9APFQATB6C"
+        href="https://luma.com/ymbzas1y"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Taller 2
+        Taller II
       </a>
 
       <a
         class="cta-btn"
-        href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8YWW4KXZ6KJ5Q"
+        href="https://luma.com/wy80k5am"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -375,11 +364,6 @@
       Donativo sugerido: 65 USD por los dos días.
     </div>
 
-    <div class="contact-text">
-      Confirmación de pago, preguntas o reserva:<br />
-      <strong>+52 625 122 4082</strong>
-    </div>
-
     <!-- LUGAR -->
     <div class="location-card">
       <div class="location-title">Lugar</div>
@@ -393,8 +377,8 @@
     </div>
   </div>
 
-  <!-- AUDIO: intenta comenzar en automático -->
-  <audio id="audio-hz" autoplay loop playsinline>
+  <!-- AUDIO: inicia en automático (truco muted -> unmute) -->
+  <audio id="audio-hz" autoplay muted loop playsinline>
     <source src="ECHO.rb.wav.rb.wav.rb.wav" type="audio/wav" />
   </audio>
 
@@ -406,12 +390,16 @@
       btn.textContent = audio.paused ? "🔇" : "🔊";
     }
 
-    function tryPlayAudio() {
+    function forceAutoPlay() {
       const audio = document.getElementById("audio-hz");
       if (!audio) return;
 
       audio.play().then(() => {
-        updateAudioIcon(audio);
+        // Desmuteo automático poquito después del autoplay
+        setTimeout(() => {
+          audio.muted = false;
+          updateAudioIcon(audio);
+        }, 150);
       }).catch(() => {
         updateAudioIcon(audio);
       });
@@ -423,6 +411,7 @@
 
       if (audio.paused) {
         audio.play().then(() => {
+          audio.muted = false;
           updateAudioIcon(audio);
         }).catch(() => {
           alert("Si no se escucha, toca de nuevo para permitir el audio.");
@@ -439,12 +428,13 @@
         video.muted = true;
         video.play().catch(() => {});
       }
-      // intento de autoplay inicial
-      tryPlayAudio();
 
-      // si el navegador bloquea, se enciende al primer toque en la página
+      // intento fuerte de autoplay
+      forceAutoPlay();
+
+      // si algún navegador sigue bloqueando, se reintenta al primer toque
       const oncePlay = () => {
-        tryPlayAudio();
+        forceAutoPlay();
         document.removeEventListener("click", oncePlay);
         document.removeEventListener("touchstart", oncePlay);
       };
@@ -454,5 +444,6 @@
   </script>
 </body>
 </html>
+
 
 
