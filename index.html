@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Taller Hipnosis Hz · 29 y 30 de noviembre</title>
 
-  <!-- PayPal Hosted Buttons -->
-  <script 
-    src="https://www.paypal.com/sdk/js?client-id=BAAje6Qcf5ySabDnKLrQXyWQ_97XzmgQqfmejL44FgKkcvPnjwrhqptS97UwQhLlwaGW9Vu25FmiKYzEs4&components=hosted-buttons&disable-funding=venmo&currency=USD">
-  </script>
-
   <style>
     :root {
       --accent1: #ff0088;
@@ -99,7 +94,7 @@
       z-index: 2;
       width: 100%;
       max-width: 420px;
-      background: rgba(3, 3, 10, 0.85);
+      background: rgba(3, 3, 10, 0.9);
       border-radius: 28px;
       padding: 14px 14px 20px;
       box-shadow: 0 18px 60px rgba(0, 0, 0, 0.9);
@@ -131,12 +126,12 @@
       margin-bottom: 10px;
     }
 
-    /* video 9:16 tipo reel */
+    /* VIDEO 9:16 tipo reel */
     .video-frame {
       background: #000;
       border-radius: 22px;
       padding: 4px;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
       margin-bottom: 14px;
     }
 
@@ -150,41 +145,40 @@
     video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;   /* <- para que NO se corte */
+      background: #000;
       display: block;
     }
 
-    /* grid de botones debajo del video */
-    .buttons-grid {
+    /* BOTONES TALLERES */
+    .cta-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
       margin-bottom: 12px;
     }
 
-    .paypal-block {
-      background: rgba(8, 8, 20, 0.9);
-      border-radius: 10px;
-      padding: 6px 6px 4px;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .paypal-title {
-      font-size: 0.73rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: rgba(235,235,235,0.95);
-      text-align: center;
-      margin-bottom: 4px;
-      min-height: 2.6em;
-      display: flex;
+    .cta-btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: radial-gradient(circle at top left,#181833,#050509);
+      color: #fdfdfd;
+      font-size: 0.8rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      text-align: center;
+      min-height: 38px;
     }
 
-    .paypal-container {
-      transform: scale(0.8);
-      transform-origin: top;
+    .cta-btn:hover {
+      border-color: var(--accent2);
     }
 
     /* contacto whatsapp */
@@ -283,13 +277,11 @@
     }
 
     @media (max-width: 480px) {
-      .buttons-grid {
+      .cta-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 1fr;
       }
-
-      .buttons-grid > :last-child {
-        grid-column: 1 / -1; /* experiencia completa ocupa toda la fila abajo */
+      .cta-grid > :last-child {
+        grid-column: 1 / -1; /* Experiencia completa ocupa toda la fila */
       }
     }
   </style>
@@ -325,21 +317,33 @@
     </div>
 
     <!-- TALLER 1 · TALLER 2 · EXPERIENCIA COMPLETA -->
-    <div class="buttons-grid">
-      <div class="paypal-block">
-        <div class="paypal-title">Taller 1</div>
-        <div id="paypal-container-G5YBF8SD9QZVQ" class="paypal-container"></div>
-      </div>
+    <div class="cta-grid">
+      <a
+        class="cta-btn"
+        href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G5YBF8SD9QZVQ"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Taller 1
+      </a>
 
-      <div class="paypal-block">
-        <div class="paypal-title">Taller 2</div>
-        <div id="paypal-container-4KZ9APFQATB6C" class="paypal-container"></div>
-      </div>
+      <a
+        class="cta-btn"
+        href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4KZ9APFQATB6C"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Taller 2
+      </a>
 
-      <div class="paypal-block">
-        <div class="paypal-title">Experiencia completa</div>
-        <div id="paypal-container-8YWW4KXZ6KJ5Q" class="paypal-container"></div>
-      </div>
+      <a
+        class="cta-btn"
+        href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8YWW4KXZ6KJ5Q"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Experiencia completa
+      </a>
     </div>
 
     <!-- CONTACTO WHATS -->
@@ -394,31 +398,23 @@
     <source src="ECHO.rb.wav.rb.wav.rb.wav" type="audio/wav" />
   </audio>
 
-  <!-- PayPal Hosted Buttons render -->
-  <script>
-    window.addEventListener("load", () => {
-      if (window.paypal && paypal.HostedButtons) {
-        paypal.HostedButtons({
-          hostedButtonId: "G5YBF8SD9QZVQ", // Taller 1
-        }).render("#paypal-container-G5YBF8SD9QZVQ");
-
-        paypal.HostedButtons({
-          hostedButtonId: "4KZ9APFQATB6C", // Taller 2
-        }).render("#paypal-container-4KZ9APFQATB6C");
-
-        paypal.HostedButtons({
-          hostedButtonId: "8YWW4KXZ6KJ5Q", // Experiencia completa
-        }).render("#paypal-container-8YWW4KXZ6KJ5Q");
-      }
-    });
-  </script>
-
   <!-- control de música -->
   <script>
     function updateAudioIcon(audio) {
       const btn = document.getElementById("audio-btn");
       if (!btn) return;
       btn.textContent = audio.paused ? "🔇" : "🔊";
+    }
+
+    function tryPlayAudio() {
+      const audio = document.getElementById("audio-hz");
+      if (!audio) return;
+
+      audio.play().then(() => {
+        updateAudioIcon(audio);
+      }).catch(() => {
+        updateAudioIcon(audio);
+      });
     }
 
     function toggleAudio() {
@@ -438,26 +434,25 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const audio = document.getElementById("audio-hz");
       const video = document.querySelector("video");
-
       if (video) {
         video.muted = true;
         video.play().catch(() => {});
       }
+      // intento de autoplay inicial
+      tryPlayAudio();
 
-      if (audio) {
-        audio.play().then(() => {
-          updateAudioIcon(audio);
-        }).catch(() => {
-          // si el navegador bloquea autoplay, la bocina sirve para encenderlo
-          updateAudioIcon(audio);
-        });
-      }
+      // si el navegador bloquea, se enciende al primer toque en la página
+      const oncePlay = () => {
+        tryPlayAudio();
+        document.removeEventListener("click", oncePlay);
+        document.removeEventListener("touchstart", oncePlay);
+      };
+      document.addEventListener("click", oncePlay);
+      document.addEventListener("touchstart", oncePlay);
     });
   </script>
 </body>
 </html>
-
 
 
