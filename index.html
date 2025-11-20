@@ -37,10 +37,23 @@
       animation: fall 8s linear infinite;
       text-shadow: 0 0 6px rgba(0,255,246,0.6);
     }
+
     .symbol:nth-child(odd){
       color: rgba(255,0,136,0.4);
       text-shadow: 0 0 6px rgba(255,0,136,0.5);
     }
+
+    /* posiciones y tiempos distintos para que no se monten */
+    .symbol:nth-child(1)  { left: 5%;  animation-duration: 9s;  animation-delay: -1s; }
+    .symbol:nth-child(2)  { left: 15%; animation-duration: 8s;  animation-delay: -3s; }
+    .symbol:nth-child(3)  { left: 25%; animation-duration: 9.5s;animation-delay: -2s; }
+    .symbol:nth-child(4)  { left: 35%; animation-duration: 7.5s;animation-delay: -4s; }
+    .symbol:nth-child(5)  { left: 45%; animation-duration: 8.5s;animation-delay: -5s; }
+    .symbol:nth-child(6)  { left: 55%; animation-duration: 9s;  animation-delay: -2.5s; }
+    .symbol:nth-child(7)  { left: 65%; animation-duration: 7.8s;animation-delay: -1.5s; }
+    .symbol:nth-child(8)  { left: 75%; animation-duration: 8.8s;animation-delay: -3.5s; }
+    .symbol:nth-child(9)  { left: 85%; animation-duration: 7.2s;animation-delay: -4.5s; }
+    .symbol:nth-child(10) { left: 92%; animation-duration: 9.2s;animation-delay: -6s; }
 
     @keyframes fall {
       0% { transform: translateY(-10vh); opacity: 0; }
@@ -65,7 +78,7 @@
     .subtitle {
       font-size: 1rem;
       color: #ccc;
-      margin-bottom: 22px;
+      margin-bottom: 16px;
     }
 
     .btn {
@@ -107,7 +120,7 @@
     .video-wrap {
       width: 100%;
       max-width: 420px;
-      margin: 20px auto;
+      margin: 16px auto 20px;
     }
 
     video {
@@ -123,7 +136,8 @@
       border: none;
       color: #fff;
       cursor: pointer;
-      margin-bottom: 15px;
+      margin-top: 4px;
+      margin-bottom: 8px;
       filter: drop-shadow(0 0 6px #ff0088);
     }
 
@@ -163,6 +177,11 @@
 
     <div class="subtitle">“El alma vibra: la conciencia despierta”</div>
 
+    <!-- Bocina ARRIBA del video -->
+    <div style="text-align:center;">
+      <button class="sound-toggle" onclick="toggleAudio()">🔊</button>
+    </div>
+
     <!-- Video grande -->
     <div class="video-wrap">
       <video autoplay muted playsinline loop>
@@ -170,15 +189,12 @@
       </video>
     </div>
 
-    <!-- Bocina -->
-    <button class="sound-toggle" onclick="toggleAudio()">🔊</button>
-
     <!-- Música -->
     <audio id="audio-hz" loop>
       <source src="ECHO.rb.wav.rb.wav.rb.wav" type="audio/wav">
     </audio>
 
-    <!-- Botones de talleres -->
+    <!-- Botones de talleres (orden que pediste) -->
     <a href="https://luma.com/0zmn7m5a" class="btn" target="_blank">
       Taller I — El Cuerpo que Piensa
     </a>
@@ -248,3 +264,4 @@
 
 </body>
 </html>
+
